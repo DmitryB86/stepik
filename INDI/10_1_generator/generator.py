@@ -39,14 +39,48 @@
 # for i in gen_squares(5):
 #     print(i)
 
-    def gen_fibonacci_numbers(n):
-        a,b = 1,1
-        for __ in range(n):
-            yield a
-            a,b = b,a+b
+# def gen_fibonacci_numbers(n):
+#     a, b = 1, 1
+#     for _ in range(n):
+#         yield a
+#         a, b = b, a + b
+#
+# for i in gen_fibonacci_numbers(10):
+#     print(i)
+#
 
+# my_range_gen copy
 
-
-for i in gen_fibonacci_numbers(10):
+def my_range_gen(start=0, stop=None, step=1):
+    if step is None:
+        if stop is None:
+            n = 0
+            while n < start:
+                yield n
+                n += 1
+        else:
+            if start>stop:
+                exit()
+            else:
+                while start<stop:
+                    yield start
+                    start+=1
+    else:
+        if step==0:
+            exit()
+        elif step<0: #(10,2,-4)
+            if stop>start:
+                exit()
+            else:
+                while start>stop:
+                    yield start
+                    start+=step
+        elif step>0: #(2,10,5)
+            if start>stop:
+                exit()
+            else:
+                while start<stop:
+                    yield start
+                    start+=step
+for i in my_range_gen(4, 9, 2):
     print(i)
-

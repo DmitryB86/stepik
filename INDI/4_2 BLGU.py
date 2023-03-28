@@ -1,27 +1,25 @@
+# 4
+# 1 4 6 2
+# 5
+# 5 1 5 7 9
 
-
-def check_in(text:str, NameClass):
-    list_value = []
-    person_list = [i for i in NameClass.__dict__]
-
-    for word in text.split():
-        if word.lower() in person_list:
-            list_value.append((f'{word}-YES'))
+boys = [1, 4, 6, 2]
+girls = [5, 1, 5, 7, 9]
+couples = 0
+boys.sort(reverse=True)
+girls.sort(reverse=True)
+i = 0
+while len(boys) != 0 or len(girls) != 0:
+    # for b in range(0,len(boys)+1):
+    #     for g in range(0,len(girls)+1):
+    if abs(boys[i] - girls[i]) > 1:
+        if boys[i] > girls[i]:
+            boys.remove(boys[i])
         else:
-            list_value.append((f'{word}-NO'))
-    return list_value
-
-class Person:
-    name = "John Smith"
-    age = 30
-    gender = "male"
-    address = "123 Main St"
-    phone_number = "555-555-5555"
-    email = "johnsmith@example.com"
-    is_employed = True
-
-
-text = 'NAME GeNdEr work hobby'
-for couple in check_in(text,Person):
-    print(couple)
-# print(check_in(text,Person))
+            girls.remove(girls[i])
+    else:
+        couples += 1
+        boys.remove(boys[i])
+        girls.remove(girls[i])
+    i+=1
+print(couples)
