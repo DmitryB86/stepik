@@ -1,9 +1,14 @@
-mat = [[0,1,2],
-       [1,5,3],
-       [2,3,4]]
-for i in mat:
-    for j in i:
-        print(j,sep='\n')
-    # for j in i:
-    #     if mat[i][j]==mat[j][i]:
-    #         print(mat[i][j])
+n=int(input())
+a=[]
+for i in range(n):
+    a.append(list(map(int, input().split())))
+count=0
+for i in range(n):
+    for j in range(n):
+        if i!=j and a[i][j]==a[j][i]:
+            count+=1
+if count ==n*n-n:
+    print('Yes')
+else:
+    print('No')
+

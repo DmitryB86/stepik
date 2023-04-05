@@ -1,13 +1,7 @@
-import random
-
-l = random.sample(range(10, 30), 5)
-print(l)
-d =dict()
-for i in l:
-    for k,v in d.items():
-        k=(i-1)
-        v=i
-
-    # d[i-1]=i
-
+l = [100, 55, 77, 55, 89]
+d = {}
+i=-1
+while len(l)>2:
+    d[l[i-1]]=l[i]
+    i=i-1
 print(d)
